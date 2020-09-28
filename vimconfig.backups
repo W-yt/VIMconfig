@@ -1,0 +1,159 @@
+"plug插件
+call plug#begin('~/.vim/plugged')
+"vim状态栏
+Plug 'vim-airline/vim-airline'
+"vim配色插件
+Plug 'connorholyday/vim-snazzy'
+" File navigation
+"Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+"Plug 'Xuyuanp/nerdtree-git-plugin'
+" Taglist
+"Plug 'majutsushi/tagbar', { 'on': 'TagbarOpenAutoClose' }
+" Error checking
+"Plug 'w0rp/ale'
+" Auto Complete
+"Plug 'Valloric/YouCompleteMe'
+" Undo Tree
+"Plug 'mbbill/undotree/'
+" Other visual enhancement
+"Plug 'nathanaelkane/vim-indent-guides'
+"Plug 'itchyny/vim-cursorword'
+" Git
+"Plug 'rhysd/conflict-marker.vim'
+"Plug 'tpope/vim-fugitive'
+"Plug 'mhinz/vim-signify'
+"Plug 'gisphm/vim-gitignore', { 'for': ['gitignore', 'vim-plug'] }
+" HTML, CSS, JavaScript, PHP, JSON, etc.
+"Plug 'elzr/vim-json'
+"Plug 'hail2u/vim-css3-syntax'
+"Plug 'spf13/PIV', { 'for' :['php', 'vim-plug'] }
+"Plug 'gko/vim-coloresque', { 'for': ['vim-plug', 'php', 'html', 'javascript', 'css', 'less'] }
+"Plug 'pangloss/vim-javascript', { 'for' :['javascript', 'vim-plug'] }
+"Plug 'mattn/emmet-vim'
+" Python
+"Plug 'vim-scripts/indentpython.vim'
+" Markdown
+"Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown', 'vim-plug'] }
+"Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
+"Plug 'vimwiki/vimwiki'
+" Bookmarks
+"Plug 'kshenoy/vim-signature'
+" Other useful utilities
+"Plug 'terryma/vim-multiple-cursors'
+"Plug 'junegunn/goyo.vim' " distraction free writing mode
+"Plug 'tpope/vim-surround' " type ysks' to wrap the word with '' or type cs'` to change 'word' to `word`
+"Plug 'godlygeek/tabular' " type ;Tabularize /= to align the =
+"Plug 'gcmt/wildfire.vim' " in Visual mode, type i' to select all text in '', or type i) i] i} ip
+"Plug 'scrooloose/nerdcommenter' " in <space>cc to comment a line
+" Dependencies
+"Plug 'MarcWeber/vim-addon-mw-utils'
+"Plug 'kana/vim-textobj-user'
+"Plug 'fadein/vim-FIGlet'
+call plug#end()
+
+"snazzy配色插件配置
+colorscheme snazzy
+let g:SnazzyTransparent = 1
+let g:lightline = { 'colorscheme': 'snazzy', }
+
+"vim个性化快捷键设置
+"设置leader键
+let mapleader=" "
+"关键词高亮
+syntax on
+"显示绝对行号
+set number
+"显示相对行号
+set relativenumber
+"显示当前行横线
+set cursorline
+"自动换行
+set wrap
+"显示正在输入的命令
+set showcmd
+"显示当前的模式
+set showmode
+"命令补全菜单
+set wildmenu
+"高亮显示搜索结果
+set hlsearch
+"每次打开vim时清除高亮
+exec "nohlsearch"
+"输入中动态显示搜索结果
+set incsearch
+"忽略大小写
+set ignorecase
+"智能大小写
+set smartcase
+"搜索结果上下索引 并显示在中间行
+noremap = nzz
+noremap - Nzz
+"多行上下索引
+noremap U 5k
+noremap N 5j
+"设置清除高亮操作
+noremap <LEADER><CR> :nohlsearch<CR>
+"取消s功能
+map s <nop>
+"shift+s -> 保存
+map S :w<CR>
+"shift+q -> 退出
+map Q :q<CR>
+"shift+r -> 重新加载vim配置文件
+map R :source $MYVIMRC<CR>
+"分屏并将光标放到相应方向
+map sd :set splitright<CR>:vsplit<CR>
+map sa :set nosplitright<CR>:vsplit<CR>
+map sw :set nosplitbelow<CR>:split<CR>
+map sx :set splitbelow<CR>:split<CR>
+"分屏状态下切屏
+map <LEADER>w <C-w>k
+map <LEADER>x <C-w>j 
+map <LEADER>a <C-w>h
+map <LEADER>d <C-w>l
+"分屏方式切换
+map sv <C-w>t<C-w>H
+map sh <C-w>t<C-w>K
+"方向键调整分屏大小
+map <LEADER><up> :res +5<CR>
+map <LEADER><down> :res -5<CR>
+map <LEADER><left> :vertical resize -5<CR>
+map <LEADER><right> :vertical resize +5<CR>
+"新建标签页
+map m :tabe<CR>
+map J :-tabNext<CR>
+map K :+tabNext<CR> 
+"vim细节配置
+set nocompatible
+filetype on
+filetype indent on
+filetype plugin on 
+filetype plugin indent on
+set mouse=a
+set encoding=utf-8
+let &t_ut=''
+set expandtab
+"缩进长度
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set list
+set listchars=tab:▸\ ,trail:▫
+set scrolloff=5
+set tw=0
+set indentexpr=
+set backspace=indent,eol,start
+set foldmethod=indent
+set foldlevel=99
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+set laststatus=2
+set autochdir
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+
+
+
+
+
